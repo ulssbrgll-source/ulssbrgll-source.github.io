@@ -14,18 +14,22 @@
   <meta property="og:image" content="https://ulssbrgll-source.github.io/assets/og-cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <style>
-    :root{--brand:#36c2ff;--ink:#111;--bg:#f7f9fc;--muted:#5c6b7a}
+    :root{--brand:#36c2ff;--ink:#0f172a;--bg:#f7f9fc;--muted:#64748b;--panel:#ffffff;--border:#e6edf5}
     *{box-sizing:border-box}
     body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:var(--bg); margin:0; color:var(--ink)}
     .container{max-width:1000px;margin:auto;padding:20px}
-    header{padding:22px 20px;background:#111;color:#fff;border-radius:14px;position:sticky;top:0}
+    header{padding:22px 20px;background:#0b1220;color:#fff;border-radius:14px;margin-top:16px}
     header h1{margin:0}
     .sub{opacity:.85;margin:.25rem 0 0}
-    .links a{color:#fff;text-decoration:none;margin-right:12px}
-    nav{margin-top:10px}
-    nav a{color:#cfe9ff;text-decoration:none;margin-right:10px;font-size:14px}
-    section{margin:26px 0;background:#fff;border-radius:14px;padding:18px 20px;border:1px solid #e6edf5}
-    h2{margin:0 0 10px;border-bottom:2px solid var(--brand);display:inline-block;padding-bottom:6px}
+    .links a{color:#cfe9ff;text-decoration:none;margin-right:12px}
+    /* Tabs */
+    .tabs{position:sticky; top:0; z-index:5; margin-top:14px; background:transparent}
+    .tabbar{display:flex; gap:8px; flex-wrap:wrap; background:transparent; backdrop-filter:saturate(140%) blur(4px)}
+    .tab{appearance:none; border:1px solid var(--border); background:var(--panel); color:var(--ink); padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600}
+    .tab[aria-selected="true"]{outline:2px solid var(--brand); box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .panel{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin-top:14px}
+    .panel[hidden]{display:none}
+    h2{margin:0 0 10px; border-bottom:2px solid var(--brand); display:inline-block; padding-bottom:6px}
     ul{padding-left:18px;margin:8px 0}
     .item{margin-bottom:14px}
     .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
@@ -55,17 +59,26 @@
   <header>
     <h1>Ulaş Birgül</h1>
     <p class="sub">Ar-Ge Merkezi Müdürü · Kar Metal Şerit Testere Makineleri</p>
-    <p class="links"><a href="mailto:ulasbirgul@karmetal.com.tr">ulasbirgul@karmetal.com.tr</a> · <a href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%BBl-46706765/" target="_blank">LinkedIn</a> · <a href="https://github.com/ulssbrgll-source" target="_blank">GitHub</a></p>
-    <nav>
-      <a href="#deneyim">Deneyim</a>
-      <a href="#egitim">Eğitim</a>
-      <a href="#projeler">Projeler</a>
-      <a href="#yetenekler">Yetenekler</a>
-      <a href="#iletisim">İletişim</a>
-    </nav>
+    <p class="links"><a href="mailto:ulasbirgul@karmetal.com.tr">ulasbirgul@karmetal.com.tr</a> · <a href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%BCl-46706765/" target="_blank">LinkedIn</a> · <a href="https://github.com/ulssbrgll-source" target="_blank">GitHub</a></p>
   </header>
 
-  <section id="deneyim">
+  <!-- TABS -->
+  <div class="tabs" role="tablist" aria-label="Özgeçmiş sekmeleri">
+    <button class="tab" role="tab" id="tab-about" aria-controls="panel-about" aria-selected="true">Hakkımda</button>
+    <button class="tab" role="tab" id="tab-exp" aria-controls="panel-exp" aria-selected="false">Deneyim</button>
+    <button class="tab" role="tab" id="tab-edu" aria-controls="panel-edu" aria-selected="false">Eğitim</button>
+    <button class="tab" role="tab" id="tab-proj" aria-controls="panel-proj" aria-selected="false">Projeler</button>
+    <button class="tab" role="tab" id="tab-skill" aria-controls="panel-skill" aria-selected="false">Yetenekler</button>
+    <button class="tab" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false">İletişim</button>
+  </div>
+
+  <!-- PANELS -->
+  <section id="panel-about" class="panel" role="tabpanel" aria-labelledby="tab-about">
+    <h2>Hakkımda</h2>
+    <p>Ar-Ge’de ürünle sahayı birleştiriyorum. Üretim makineleri ve otomasyon alanında; süreç tasarımı, prototipleme, devreye alma ve standartlaştırma uçtan uca odağım. Son yıllarda CE uygunluğu, kalite sistemleri ve yalın üretim pratiklerine ağırlık verdim.</p>
+  </section>
+
+  <section id="panel-exp" class="panel" role="tabpanel" aria-labelledby="tab-exp" hidden>
     <h2>İş Deneyimleri</h2>
     <div class="item">
       <h3>Kar Metal Şerit Testere Makineleri Lim. Şti. <span class="muted">(September 2016 – Günümüz, Sakarya)</span></h3>
@@ -122,7 +135,7 @@
     </div>
   </section>
 
-  <section id="egitim">
+  <section id="panel-edu" class="panel" role="tabpanel" aria-labelledby="tab-edu" hidden>
     <h2>Eğitim</h2>
     <div class="item">
       <h3>Sakarya Uygulamalı Bilimler Üniversitesi</h3>
@@ -142,21 +155,7 @@
     </div>
   </section>
 
-  <section>
-    <h2>Sertifika / Seminer ve Kurslar</h2>
-    <ul>
-      <li>SAHA MBA Yönetici Gelişim Programı — SAHA İSTANBUL <span class="muted">(07/2024) — 270s eğitim, 24s vaka, 8s mentörlük, 32s strateji sim., 20s sektör liderleri</span></li>
-      <li>Makine Emniyet Yönetmeliği Ek I ve Ek IV — Sanayi ve Teknoloji Bakanlığı <span class="muted">(02/2020)</span></li>
-      <li>Tehlikeli Yerlerde İSG — Sanayi ve Teknoloji Bakanlığı <span class="muted">(01/2020)</span></li>
-      <li>Yalın Üretim Teknikleri — ADAMAKSAN Kaizen Okulu <span class="muted">(04/2019)</span></li>
-      <li>Makine Güvenliği — SICK <span class="muted">(08/2018)</span>; Hidrolik Eğitimi — ROTA Teknik <span class="muted">(04/2018)</span></li>
-      <li>ISO 9001:2008 KYS — SASTEK <span class="muted">(04/2011)</span>; OHSAS/TS 18001 İSGYS — SASTEK <span class="muted">(03/2010)</span></li>
-      <li>CATIA — Tasarım Akademi <span class="muted">(12/2011)</span>; Yabancı Diller — Maximum Language School <span class="muted">(01/2009, Pre-Intermediate)</span></li>
-      <li>Autodesk & Eras Arnova — Dijital Tasarım Semineri <span class="muted">(04/2016, SAÜ)</span></li>
-    </ul>
-  </section>
-
-  <section id="projeler">
+  <section id="panel-proj" class="panel" role="tabpanel" aria-labelledby="tab-proj" hidden>
     <h2>Projeler</h2>
     <ul>
       <li><strong>Servant — Mobil Robot Çözüm Platformu</strong> <span class="muted">(Sektör bazlı modüller, ROI hesaplayıcı, satış sonrası analitik)</span></li>
@@ -165,7 +164,7 @@
     </ul>
   </section>
 
-  <section id="yetenekler">
+  <section id="panel-skill" class="panel" role="tabpanel" aria-labelledby="tab-skill" hidden>
     <h2>Yetenekler</h2>
     <div class="skills">
       <span class="pill">AutoCAD</span>
@@ -186,16 +185,11 @@
     </div>
   </section>
 
-  <section id="iletisim">
+  <section id="panel-contact" class="panel" role="tabpanel" aria-labelledby="tab-contact" hidden>
     <h2>İletişim</h2>
     <p><a class="btn" href="mailto:ulasbirgul@karmetal.com.tr?subject=Merhaba%20Ula%C5%9F">E‑posta Gönder</a>
        &nbsp; <a class="btn" href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%BCl-46706765/" target="_blank" rel="noopener">LinkedIn'den Bağlan</a></p>
     <p class="muted">CV bağlantısını şimdilik kaldırdık. İstediğin zaman tekrar ekleyebilirim.</p>
-  </section>
-
-  <section>
-    <h2>Hobi ve İlgi Alanları</h2>
-    <p>Basketbol, masa tenisi, kamp ve seyahat etmek</p>
   </section>
 
   <footer>
@@ -203,6 +197,33 @@
   </footer>
 </div>
 <script>
+  // Tab logic
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  const panels = Array.from(document.querySelectorAll('.panel'));
+  function activate(id){
+    tabs.forEach(t=>{
+      const sel = t.id === 'tab-' + id;
+      t.setAttribute('aria-selected', sel);
+    });
+    panels.forEach(p=>{
+      p.hidden = p.id !== 'panel-' + id;
+    });
+    history.replaceState(null, '', '#' + id);
+  }
+  tabs.forEach(t=>{
+    t.addEventListener('click', ()=> activate(t.id.replace('tab-','')));
+    t.addEventListener('keydown', (e)=>{
+      if(e.key==='ArrowRight' || e.key==='ArrowLeft'){
+        e.preventDefault();
+        const i = tabs.indexOf(t);
+        const n = (i + (e.key==='ArrowRight'?1:-1) + tabs.length) % tabs.length;
+        tabs[n].focus();
+      }
+    })
+  });
+  // Load from hash
+  const hash = location.hash.replace('#','');
+  if(['about','exp','edu','proj','skill','contact'].includes(hash)) activate(hash);
   document.getElementById('yil').textContent = new Date().getFullYear();
 </script>
 </body>
