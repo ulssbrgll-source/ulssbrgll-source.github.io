@@ -5,14 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ulaş Birgül — Özgeçmiş</title>
   <meta name="description" content="Ulaş Birgül – Ar-Ge Merkezi Müdürü. Üretim, otomasyon, tasarım ve Ar-Ge süreçlerinde uzman." />
-  <link rel="icon" href="/assets/favicon.ico">
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Ulaş Birgül — Özgeçmiş">
-  <meta property="og:description" content="Ar-Ge, üretim, otomasyon ve dijitalleşme odaklı liderlik.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ulssbrgll-source.github.io/">
-  <meta property="og:image" content="https://ulssbrgll-source.github.io/assets/og-cover.jpg">
-  <meta name="twitter:card" content="summary_large_image">
   <style>
     :root{--brand:#36c2ff;--ink:#0f172a;--bg:#f7f9fc;--muted:#64748b;--panel:#ffffff;--border:#e6edf5}
     *{box-sizing:border-box}
@@ -27,7 +19,7 @@
     .tab{appearance:none; border:1px solid var(--border); background:var(--panel); color:var(--ink); padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600; margin-right:8px}
     .tab[aria-selected="true"]{outline:2px solid var(--brand); box-shadow:0 2px 8px rgba(0,0,0,.06)}
     .panel{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin-top:14px}
-    .panel[hidden]{display:none}
+    .panel[hidden]{display:none} /* <-- gizli panelleri kapatır */
     h2{margin:0 0 10px; border-bottom:2px solid var(--brand); display:inline-block; padding-bottom:6px}
     ul{padding-left:18px;margin:8px 0}
     .item{margin-bottom:14px}
@@ -37,31 +29,20 @@
     footer{text-align:center;margin:30px 0;color:var(--muted);font-size:14px}
     .muted{color:var(--muted)}
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ulaş Birgül",
-    "jobTitle": "Ar-Ge Merkezi Müdürü",
-    "worksFor": {"@type":"Organization","name":"Kar Metal Şerit Testere Makineleri"},
-    "email": "mailto:ulasbirgul@karmetal.com.tr",
-    "url": "https://ulssbrgll-source.github.io/",
-    "sameAs": [
-      "https://www.linkedin.com/in/ula%C5%9F-birg%C3%BCl-46706765/",
-      "https://github.com/ulssbrgll-source"
-    ]
-  }
-  </script>
 </head>
 <body>
 <div class="container">
   <header>
     <h1>Ulaş Birgül</h1>
     <p class="sub">Ar-Ge Merkezi Müdürü · Kar Metal Şerit Testere Makineleri</p>
-    <p class="links"><a href="mailto:ulasbirgul@karmetal.com.tr">ulasbirgul@karmetal.com.tr</a> · <a href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%BBl-46706765/" target="_blank">LinkedIn</a> · <a href="https://github.com/ulssbrgll-source" target="_blank">GitHub</a></p>
+    <p class="links">
+      <a href="mailto:ulasbirgul@karmetal.com.tr">ulasbirgul@karmetal.com.tr</a> ·
+      <a href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%Bcl-46706765/" target="_blank">LinkedIn</a> ·
+      <a href="https://github.com/ulssbrgll-source" target="_blank">GitHub</a>
+    </p>
   </header>
 
-  <!-- TABS -->
+  <!-- SEKME ÇUBUĞU -->
   <div class="tabs" role="tablist" aria-label="Özgeçmiş sekmeleri">
     <button class="tab" role="tab" id="tab-about"   aria-controls="panel-about"   aria-selected="true">Hakkımda</button>
     <button class="tab" role="tab" id="tab-exp"     aria-controls="panel-exp"     aria-selected="false">Deneyim</button>
@@ -71,7 +52,8 @@
     <button class="tab" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false">İletişim</button>
   </div>
 
-  <!-- PANELS -->
+  <!-- PANELLER -->
+  <!-- NOT: Sadece Hakkımda görünür; diğerlerinin üzerinde "hidden" VAR -->
   <section id="panel-about" class="panel" role="tabpanel" aria-labelledby="tab-about">
     <h2>Hakkımda</h2>
     <p>Ar-Ge’de ürünle sahayı birleştiriyorum. Üretim makineleri ve otomasyon alanında; süreç tasarımı, prototipleme, devreye alma ve standartlaştırma uçtan uca odağım. Son yıllarda CE uygunluğu, kalite sistemleri ve yalın üretim pratiklerine ağırlık verdim.</p>
@@ -186,40 +168,45 @@
 
   <section id="panel-contact" class="panel" role="tabpanel" aria-labelledby="tab-contact" hidden>
     <h2>İletişim</h2>
-    <p><a class="btn" href="mailto:ulasbirgul@karmetal.com.tr?subject=Merhaba%20Ula%C5%9F">E‑posta Gönder</a>
-       &nbsp; <a class="btn" href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%Bcl-46706765/" target="_blank" rel="noopener">LinkedIn'den Bağlan</a></p>
+    <p>
+      <a class="btn" href="mailto:ulasbirgul@karmetal.com.tr?subject=Merhaba%20Ula%C5%9F">E-posta Gönder</a>
+      &nbsp;
+      <a class="btn" href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%Bcl-46706765/" target="_blank" rel="noopener">LinkedIn'den Bağlan</a>
+    </p>
   </section>
 
   <footer>
     © <span id="yil"></span> Ulaş Birgül — Tüm hakları saklıdır.
   </footer>
 </div>
+
 <script>
-  // Tab logic
-  const tabs = Array.from(document.querySelectorAll('.tab'));
+  // Sekme mantığı
+  const tabs   = Array.from(document.querySelectorAll('.tab'));
   const panels = Array.from(document.querySelectorAll('.panel'));
+
   function activate(id){
-    tabs.forEach(t=>{
-      t.setAttribute('aria-selected', t.id === 'tab-' + id);
-    });
-    panels.forEach(p=>{
-      p.hidden = (p.id !== 'panel-' + id);
-    });
-    history.replaceState(null, '', '#' + id);
+    tabs.forEach(t => t.setAttribute('aria-selected', t.id === 'tab-'+id));
+    panels.forEach(p => p.hidden = (p.id !== 'panel-'+id));
+    history.replaceState(null, '', '#'+id);
   }
-  tabs.forEach(t=>{
-    t.addEventListener('click', ()=> activate(t.id.replace('tab-','')));
-    t.addEventListener('keydown', (e)=>{
+
+  tabs.forEach(t => {
+    t.addEventListener('click', () => activate(t.id.replace('tab-','')));
+    t.addEventListener('keydown', (e) => {
       if(e.key==='ArrowRight' || e.key==='ArrowLeft'){
         e.preventDefault();
         const i = tabs.indexOf(t);
         const n = (i + (e.key==='ArrowRight'?1:-1) + tabs.length) % tabs.length;
         tabs[n].focus();
       }
-    })
+    });
   });
+
+  // URL hash ile açılış
   const hash = location.hash.replace('#','');
   if(['about','exp','edu','proj','skill','contact'].includes(hash)) activate(hash);
+
   document.getElementById('yil').textContent = new Date().getFullYear();
 </script>
 </body>
