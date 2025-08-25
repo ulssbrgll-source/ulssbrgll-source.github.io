@@ -24,8 +24,7 @@
     .links a{color:#cfe9ff;text-decoration:none;margin-right:12px}
     /* Tabs */
     .tabs{position:sticky; top:0; z-index:5; margin-top:14px; background:transparent}
-    .tabbar{display:flex; gap:8px; flex-wrap:wrap; background:transparent; backdrop-filter:saturate(140%) blur(4px)}
-    .tab{appearance:none; border:1px solid var(--border); background:var(--panel); color:var(--ink); padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600}
+    .tab{appearance:none; border:1px solid var(--border); background:var(--panel); color:var(--ink); padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600; margin-right:8px}
     .tab[aria-selected="true"]{outline:2px solid var(--brand); box-shadow:0 2px 8px rgba(0,0,0,.06)}
     .panel{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin-top:14px}
     .panel[hidden]{display:none}
@@ -59,18 +58,18 @@
   <header>
     <h1>Ulaş Birgül</h1>
     <p class="sub">Ar-Ge Merkezi Müdürü · Kar Metal Şerit Testere Makineleri</p>
-    <p class="links"><a href="mailto:ulasbirgul@karmetal.com.tr">ulasbirgul@karmetal.com.tr</a> · <a href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%BCl-46706765/" target="_blank">LinkedIn</a> · <a href="https://github.com/ulssbrgll-source" target="_blank">GitHub</a></p>
+    <p class="links"><a href="mailto:ulasbirgul@karmetal.com.tr">ulasbirgul@karmetal.com.tr</a> · <a href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%BBl-46706765/" target="_blank">LinkedIn</a> · <a href="https://github.com/ulssbrgll-source" target="_blank">GitHub</a></p>
   </header>
-<!-- TABS -->
-<div class="tabs" role="tablist" aria-label="Özgeçmiş sekmeleri">
-  <button class="tab" role="tab" id="tab-about"   aria-controls="panel-about"   aria-selected="true">Hakkımda</button>
-  <button class="tab" role="tab" id="tab-exp"     aria-controls="panel-exp"     aria-selected="false">Deneyim</button>
-  <button class="tab" role="tab" id="tab-edu"     aria-controls="panel-edu"     aria-selected="false">Eğitim</button>
-  <button class="tab" role="tab" id="tab-proj"    aria-controls="panel-proj"    aria-selected="false">Projeler</button>
-  <button class="tab" role="tab" id="tab-skill"   aria-controls="panel-skill"   aria-selected="false">Yetenekler</button>
-  <button class="tab" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false">İletişim</button>
-</div>
 
+  <!-- TABS -->
+  <div class="tabs" role="tablist" aria-label="Özgeçmiş sekmeleri">
+    <button class="tab" role="tab" id="tab-about"   aria-controls="panel-about"   aria-selected="true">Hakkımda</button>
+    <button class="tab" role="tab" id="tab-exp"     aria-controls="panel-exp"     aria-selected="false">Deneyim</button>
+    <button class="tab" role="tab" id="tab-edu"     aria-controls="panel-edu"     aria-selected="false">Eğitim</button>
+    <button class="tab" role="tab" id="tab-proj"    aria-controls="panel-proj"    aria-selected="false">Projeler</button>
+    <button class="tab" role="tab" id="tab-skill"   aria-controls="panel-skill"   aria-selected="false">Yetenekler</button>
+    <button class="tab" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false">İletişim</button>
+  </div>
 
   <!-- PANELS -->
   <section id="panel-about" class="panel" role="tabpanel" aria-labelledby="tab-about">
@@ -188,8 +187,7 @@
   <section id="panel-contact" class="panel" role="tabpanel" aria-labelledby="tab-contact" hidden>
     <h2>İletişim</h2>
     <p><a class="btn" href="mailto:ulasbirgul@karmetal.com.tr?subject=Merhaba%20Ula%C5%9F">E‑posta Gönder</a>
-       &nbsp; <a class="btn" href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%BCl-46706765/" target="_blank" rel="noopener">LinkedIn'den Bağlan</a></p>
-    <p class="muted">CV bağlantısını şimdilik kaldırdık. İstediğin zaman tekrar ekleyebilirim.</p>
+       &nbsp; <a class="btn" href="https://www.linkedin.com/in/ula%C5%9F-birg%C3%Bcl-46706765/" target="_blank" rel="noopener">LinkedIn'den Bağlan</a></p>
   </section>
 
   <footer>
@@ -202,11 +200,10 @@
   const panels = Array.from(document.querySelectorAll('.panel'));
   function activate(id){
     tabs.forEach(t=>{
-      const sel = t.id === 'tab-' + id;
-      t.setAttribute('aria-selected', sel);
+      t.setAttribute('aria-selected', t.id === 'tab-' + id);
     });
     panels.forEach(p=>{
-      p.hidden = p.id !== 'panel-' + id;
+      p.hidden = (p.id !== 'panel-' + id);
     });
     history.replaceState(null, '', '#' + id);
   }
@@ -221,7 +218,6 @@
       }
     })
   });
-  // Load from hash
   const hash = location.hash.replace('#','');
   if(['about','exp','edu','proj','skill','contact'].includes(hash)) activate(hash);
   document.getElementById('yil').textContent = new Date().getFullYear();
