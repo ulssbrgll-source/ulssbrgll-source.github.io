@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ulaş Birgül — Özgeçmiş</title>
-  <meta name="description" content="Ulaş Birgül – Ar-Ge Merkezi Müdürü. Üretim, otomasyon, tasarım ve Ar-Ge süreçlerinde uzman." />
+  <meta name="description" content="Ulaş Birgül – Ar-Ge Merkezi Müdürü. Üretim makineleri, otomasyon ve Ar-Ge süreçlerinde uzman." />
   <style>
     :root{--brand:#36c2ff;--ink:#0f172a;--bg:#f7f9fc;--muted:#64748b;--panel:#ffffff;--border:#e6edf5}
     *{box-sizing:border-box}
@@ -14,12 +14,15 @@
     header h1{margin:0}
     .sub{opacity:.85;margin:.25rem 0 0}
     .links a{color:#cfe9ff;text-decoration:none;margin-right:12px}
+
     /* Tabs */
     .tabs{position:sticky; top:0; z-index:5; margin-top:14px; background:transparent}
     .tab{appearance:none; border:1px solid var(--border); background:var(--panel); color:var(--ink); padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600; margin-right:8px}
     .tab[aria-selected="true"]{outline:2px solid var(--brand); box-shadow:0 2px 8px rgba(0,0,0,.06)}
+
     .panel{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin-top:14px}
-    .panel[hidden]{display:none} /* <-- gizli panelleri kapatır */
+    .panel[hidden]{display:none} /* ⬅️ gizli paneller */
+
     h2{margin:0 0 10px; border-bottom:2px solid var(--brand); display:inline-block; padding-bottom:6px}
     ul{padding-left:18px;margin:8px 0}
     .item{margin-bottom:14px}
@@ -53,12 +56,13 @@
   </div>
 
   <!-- PANELLER -->
-  <!-- NOT: Sadece Hakkımda görünür; diğerlerinin üzerinde "hidden" VAR -->
+  <!-- Hakkımda görünür (hidden YOK) -->
   <section id="panel-about" class="panel" role="tabpanel" aria-labelledby="tab-about">
     <h2>Hakkımda</h2>
     <p>Ar-Ge’de ürünle sahayı birleştiriyorum. Üretim makineleri ve otomasyon alanında; süreç tasarımı, prototipleme, devreye alma ve standartlaştırma uçtan uca odağım. Son yıllarda CE uygunluğu, kalite sistemleri ve yalın üretim pratiklerine ağırlık verdim.</p>
   </section>
 
+  <!-- Diğer paneller gizli başlar (hidden VAR) -->
   <section id="panel-exp" class="panel" role="tabpanel" aria-labelledby="tab-exp" hidden>
     <h2>İş Deneyimleri</h2>
     <div class="item">
@@ -185,6 +189,9 @@
   const tabs   = Array.from(document.querySelectorAll('.tab'));
   const panels = Array.from(document.querySelectorAll('.panel'));
 
+  // Emniyet: açılışta about dışını gizle (hidden yoksa da)
+  panels.forEach(p => { if (p.id !== 'panel-about') p.hidden = true; });
+
   function activate(id){
     tabs.forEach(t => t.setAttribute('aria-selected', t.id === 'tab-'+id));
     panels.forEach(p => p.hidden = (p.id !== 'panel-'+id));
@@ -203,7 +210,7 @@
     });
   });
 
-  // URL hash ile açılış
+  // URL hash ile doğrudan panel açılışı
   const hash = location.hash.replace('#','');
   if(['about','exp','edu','proj','skill','contact'].includes(hash)) activate(hash);
 
